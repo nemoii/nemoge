@@ -34,6 +34,11 @@ html, body {
     height: 160px;
     background: url(../img/logo.jpg) left top no-repeat;
     float: right;
+    margin-right:15px;
+    -o-animation-delay:5s;
+    -webkit-animation-delay:5s;
+    animation-delay:5s;
+    -moz-animation-delay:5s;
 }
 
 #href {
@@ -44,10 +49,6 @@ html, body {
     margin: 10px;
 }
 
-    #href:hover {
-        text-shadow: 3px 2px 1px #000;
-        color: #38f;
-    }
 
 #href-container {
     z-index: 10;
