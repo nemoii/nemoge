@@ -1,4 +1,4 @@
-if (window.location.search == "")
+ï»¿if (window.location.search == "")
 {
     window.location.href="http://www.nemoge.com/";
 }
@@ -7,23 +7,23 @@ title = document.getElementsByTagName("title")[0];
 wrapper = document.getElementById("wrapper");
 if(getQueryStringValue("login"))
 {
-    title.innerText = "µÇÂ¼µ½C5IM";
+    title.innerText = "ç™»å½•åˆ°C5IM";
     wrapper.innerHTML = "\
-    <div id=\"formCaption\">µÇÂ¼µ½C5IM</div>\
+    <div id=\"formCaption\">ç™»å½•åˆ°C5IM</div>\
     <div class=\"loginBox\">\
     <img class=\"profile-img\" src=\"avatar_2x.png\" alt=\"\">\
         <form>\
             <table class=\"center\" id=\"signupTable\">\
                 <tr>\
-                    <td><label for=\"username\">ÓÃ»§Ãû</label></td>\
+                    <td><label for=\"username\">ç”¨æˆ·å</label></td>\
                     <td><input type=\"text\" name=\"username\" id=\"username\" maxlength=\"12\"/></td>\
                 </tr>\
                 <tr>\
-                    <td><label for=\"password\">ÃÜ&nbsp;&nbsp;&nbsp;&nbsp;Âë</label></td>\
+                    <td><label for=\"password\">å¯†&nbsp;&nbsp;&nbsp;&nbsp;ç </label></td>\
                     <td><input type=\"password\" name=\"password\" id=\"password\" maxlength=\"20\" /></td>\
                 </tr>\
                 <tr>\
-                    <td colspan=\"2\"><input type=\"submit\" value=\"µÇ Â¼\" id=\"submit\" class=\"form-button\" /></td>\
+                    <td colspan=\"2\"><input type=\"submit\" value=\"ç™» å½•\" id=\"submit\" class=\"form-button\" /></td>\
                 </tr>\
             </table>\
         </form>\
@@ -32,26 +32,26 @@ if(getQueryStringValue("login"))
 }
 else if(getQueryStringValue("signup"))
 {
-    title.innerText = "´´½¨ÄúµÄC5IMÕËºÅ";
+    title.innerText = "åˆ›å»ºæ‚¨çš„C5IMè´¦å·";
     wrapper.innerHTML = "\
-    <div id=\"formCaption\">´´½¨ÄúµÄC5IMÕËºÅ</div>\
+    <div id=\"formCaption\">åˆ›å»ºæ‚¨çš„C5IMè´¦å·</div>\
     <div class=\"signupBox\">\
         <form>\
             <table class=\"center\" id=\"signupTable\">\
                 <tr>\
-                    <td><label for=\"username\">ÓÃ»§Ãû</label></td>\
+                    <td><label for=\"username\">ç”¨æˆ·å</label></td>\
                     <td><input type=\"text\" name=\"username\" id=\"username\" maxlength=\"12\"/></td>\
                 </tr>\
                 <tr>\
-                    <td><label for=\"password\">ÃÜ&nbsp;&nbsp;&nbsp;&nbsp;Âë</label></td>\
+                    <td><label for=\"password\">å¯†&nbsp;&nbsp;&nbsp;&nbsp;ç </label></td>\
                     <td><input type=\"password\" name=\"password\" id=\"password\" maxlength=\"20\" /></td>\
                 </tr>\
                 <tr>\
-                    <td><label for=\"nickname\">êÇ&nbsp;&nbsp;&nbsp;&nbsp;³Æ</label></td>\
+                    <td><label for=\"nickname\">æ˜µ&nbsp;&nbsp;&nbsp;&nbsp;ç§°</label></td>\
                     <td><input type=\"text\" name=\"nickname\" id=\"nickname\" maxlength=\"12\" /></td>\
                 </tr>\
                 <tr>\
-                    <td colspan=\"2\"><input type=\"submit\" value=\"×¢ ²á\" id=\"submit\" class=\"form-button\" /></td>\
+                    <td colspan=\"2\"><input type=\"submit\" value=\"æ³¨ å†Œ\" id=\"submit\" class=\"form-button\" /></td>\
                 </tr>\
             </table>\
         </form>\
