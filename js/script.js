@@ -107,3 +107,5 @@ var Typer = {
             this.write("|"); // else write it
     }
 }
+
+setInterval(function () { Typer.addText(90); }, 500);

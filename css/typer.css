@@ -1,6 +1,7 @@
 .accessGranted {
     position: absolute;
-    top: 200px;
+    top: 300px;
+    color: #0F0;
     background: #333;
     padding: 20px;
     border: 1px solid #999;
@@ -12,7 +13,7 @@
 
 .accessDenied {
     position: absolute;
-    top: 200px;
+    top: 300px;
     color: #F00;
     background: #511;
     padding: 20px;
@@ -28,4 +29,5 @@
     color: #000000;
     font-family: monospace;
     font-size:24px;
+    margin:20px 50px 20px 50px;
 }
