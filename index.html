@@ -6,41 +6,48 @@
     <title>Nemo's Homepage</title>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/csshake.min.css" />
+    <link rel="stylesheet" href="css/typer.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript">
-        function goto(url)
-        {
+        function goto(url) {
             window.location = url;
         }
+        Typer.speed = 1;
+        Typer.file = '/_/kernel.txt';
+        Typer.init();
     </script>
+
 </head>
 <body>
-    <div id="header">
-        <div id="logo" class="shake shake-slow hover-stop shake-constant"></div>
-        <div id="href-container">
-            <a href="http://www.nemoge.com" target="_self" class="shake">
-                <span id="href">
-                    Nemo's
-                    <br />
-                    &nbsp;&nbsp;&nbsp;
-                    Homepage
+    <div id="wrap">
+        <div id="header">
+            <div id="logo" class="shake shake-slow hover-stop shake-constant"></div>
+            <div id="href-container">
+                <a href="http://www.nemoge.com" target="_self" class="shake">
+                    <span id="href">
+                        Nemo's
+                        <br />
+                        &nbsp;&nbsp;&nbsp;
+                        Homepage
+                    </span>
+                </a>
+            </div>
+            <div id="header-links">
+                <span class="header-link" onclick="goto('http://blog.nemoge.com')">
+                    Blog
                 </span>
-            </a>
+                <span class="header-link" onclick="goto('http://class.nemoge.com')">
+                    Class
+                </span>
+                <span class="header-link" onclick="alert('constructing...')">
+                    Blog
+                </span>
+            </div>
         </div>
-        <div id="header-links">
-            <span class="header-link" onclick="goto('http://blog.nemoge.com')">
-                Blog
-            </span>
-            <span class="header-link" onclick="goto('http://class.nemoge.com')">
-                Class
-            </span>
-            <span class="header-link" onclick="alert('constructing...')">
-                Blog
-            </span>
+        <div id="main">
+            <div id="console"></div>
         </div>
     </div>
-    <div id="left-fix">
-
-    </div>
-
 </body>
 </html>
