@@ -27,7 +27,7 @@ var Typer = {
         $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
         });
-        if (autoTyper) {
+        if (Typer.autoTyper) {
             accessAuto = setInterval(function () { Typer.addText(90); }, 100);
         }
     },
@@ -78,7 +78,7 @@ var Typer = {
             }
         } else if (key.keyCode == 27) { // key 27 = esc key
             Typer.hidepop(); // hide all popups
-            clearInterval(accessAuto);
+            clearInterval(Typer.accessAuto);
         } else if (Typer.text) { // otherway if text is loaded
             var cont = Typer.content(); // get the console content
             if (cont.substring(cont.length - 1, cont.length) == "|") // if the last char is the blinking cursor
