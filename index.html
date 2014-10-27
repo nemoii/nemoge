@@ -13,10 +13,13 @@
         function goto(url) {
             window.location = url;
         }
-        Typer.speed = 1;
-        Typer.autoTyper = true;
-        Typer.file = '/typer/kernel.txt';
-        Typer.init();
+        setTimeout(function () {
+            $("#console").show();
+            Typer.speed = 1;
+            Typer.autoTyper = true;
+            Typer.file = '/typer/kernel.txt';
+            Typer.init();
+        }, 1000*60);
     </script>
 
 </head>

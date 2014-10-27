@@ -2,16 +2,6 @@
 *(c) Copyright 2011 Simone Masiero. Some Rights Reserved. 
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
-$(
-    function () {
-        $(document).keydown(
-            function (event) {
-                Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
-            }
-        );
-    }
-);
-
 var Typer = {
     text: null,
     autoTyper: false,
@@ -23,12 +13,21 @@ var Typer = {
     accessCount: 0, //times alt is pressed for Access Granted
     deniedCount: 0, //times caps is pressed for Access Denied
     init: function () {// inizialize Hacker Typer
+        $(
+            function () {
+                $(document).keydown(
+                    function (event) {
+                        Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
+                    }
+                );
+            }
+        );
         accessCountimer = setInterval(function () { Typer.updLstChr(); }, 500); // inizialize timer for blinking cursor
         $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
         });
         if (Typer.autoTyper) {
-            accessAuto = setInterval(function () { Typer.addText(90); }, 100);
+            accessAuto = setInterval(function () { Typer.addText(90); }, 20);
         }
     },
 
