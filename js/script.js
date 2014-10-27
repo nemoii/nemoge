@@ -2,20 +2,21 @@
 *(c) Copyright 2011 Simone Masiero. Some Rights Reserved. 
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
-
 $(
-	function () {
-	    $(document).keydown(
-			function (event) {
-			    Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
-			}
-		);
-	}
+    function () {
+        $(document).keydown(
+            function (event) {
+                Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
+            }
+        );
+    }
 );
 
 var Typer = {
     text: null,
+    autoTyper: false,
     accessCountimer: null,
+    accessAuto: null,
     index: 0, // current cursor position
     speed: 2, // speed of the Typer
     file: "", //file, must be setted
@@ -26,6 +27,9 @@ var Typer = {
         $.get(Typer.file, function (data) {// get the text file
             Typer.text = data;// save the textfile in Typer.text
         });
+        if (autoTyper) {
+            accessAuto = setInterval(function () { Typer.addText(90); }, 100);
+        }
     },
 
     content: function () {
@@ -74,6 +78,7 @@ var Typer = {
             }
         } else if (key.keyCode == 27) { // key 27 = esc key
             Typer.hidepop(); // hide all popups
+            clearInterval(accessAuto);
         } else if (Typer.text) { // otherway if text is loaded
             var cont = Typer.content(); // get the console content
             if (cont.substring(cont.length - 1, cont.length) == "|") // if the last char is the blinking cursor
@@ -107,5 +112,3 @@ var Typer = {
             this.write("|"); // else write it
     }
 }
-
-setInterval(function () { Typer.addText(90); }, 500);
