@@ -16,7 +16,7 @@ function init()
 	}
 	
 	xmlHttp.onreadystatechange = onGetStat;
-	xmlHttp.open("GET", "api.php?event=stat", true);
+	xmlHttp.open("GET", "http://api.nemoge.com/exercise/api.php?event=stat", true);
 	xmlHttp.send(null);
 }
 
@@ -52,7 +52,7 @@ function start()
 {
 	btn.disabled = true;
 	xmlHttp.onreadystatechange = onStarted;
-	xmlHttp.open("GET", "api.php?event=start", true);
+	xmlHttp.open("GET", "http://api.nemoge.com/exercise/api.php?event=start", true);
 	xmlHttp.send(null);
 }
 
@@ -60,7 +60,7 @@ function stop()
 {
 	btn.disabled = true;
 	xmlHttp.onreadystatechange = onStoped;
-	xmlHttp.open("GET", "api.php?event=stop", true);
+	xmlHttp.open("GET", "http://api.nemoge.com/exercise/api.php?event=stop", true);
 	xmlHttp.send(null);
 }
 
