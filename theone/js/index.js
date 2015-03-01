@@ -38,7 +38,7 @@ firework.prototype = {
 		var b = document.createElement('div');
 		var w = document.body.clientWidth;
 		b.style.color = this.color();
-		b.style.position = 'absolute';
+		b.style.position = 'fixed';
 		b.style.bottom = 0;
 		b.style.left = Math.floor(Math.random()*w)+1+'px';
 		document.body.appendChild(b);
