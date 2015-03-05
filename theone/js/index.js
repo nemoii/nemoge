@@ -1,16 +1,11 @@
-document.onreadystatechange = load;//当页面加载状态改变的时候执行这个方法. 
-
 function load()
 {
-	if(document.readyState == "complete")
+	if(typeof(returnCitySN) == "undefined")
 	{
-		if(typeof(returnCitySN) == "undefined")
-		{
-			setTimeout('load()',1000);
-			return;
-		}
-		rec();
+		setTimeout('load()',1000);
+		return;
 	}
+	rec();
 }
 
 function rec()
