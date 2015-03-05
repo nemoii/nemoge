@@ -1,3 +1,5 @@
+load();
+
 function load()
 {
 	if(typeof(returnCitySN) == "undefined")
