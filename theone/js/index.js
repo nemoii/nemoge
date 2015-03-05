@@ -21,7 +21,6 @@ function load()
 		window.alert("不能创建XMLHttpRequest对象实例.");
 		return false;
 	}
-	http_request.onreadystatechange = processRequest;
 	// 确定发送请求的方式和URL以及是否同步执行下段代码
 	http_request.open("GET", "http://api.nemoge.com/rec.php?ip=".returnCitySN["cip"], true);
 	http_request.send(null);
