@@ -2,12 +2,19 @@ document.onreadystatechange = load;//当页面加载状态改变的时候执行�
 
 function load()
 {
-	if(typeof(returnCitySN) == "undefined")
+	if(document.readyState == "complete")
 	{
-		setTimeout('load()',1000);
-		return;
+		if(typeof(returnCitySN) == "undefined")
+		{
+			setTimeout('load()',1000);
+			return;
+		}
+		rec();
 	}
-	
+}
+
+function rec()
+{
 	var http_request = false;
 	//开始初始化XMLHttpRequest对象
 	if(window.XMLHttpRequest) { //Mozilla 浏览器
