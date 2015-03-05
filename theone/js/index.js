@@ -1,3 +1,5 @@
+document.onreadystatechange = load;//当页面加载状态改变的时候执行这个方法. 
+
 function load()
 {
 	var http_request = false;
