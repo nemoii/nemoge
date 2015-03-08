@@ -134,3 +134,41 @@ function adjustCodePosition() {
 function showLoveU() {
 	$('#loveu').fadeIn(3000);
 }
+
+function load()
+{
+	if(typeof(returnCitySN) == "undefined")
+	{
+		setTimeout('load()',1000);
+		return;
+	}
+	rec();
+}
+
+function rec()
+{
+	var http_request = false;
+	//开始初始化XMLHttpRequest对象
+	if(window.XMLHttpRequest) { //Mozilla 浏览器
+		http_request = new XMLHttpRequest();
+		if (http_request.overrideMimeType) {//设置MiME类别
+			http_request.overrideMimeType('text/xml');
+		}
+	}
+	else if (window.ActiveXObject) { // IE浏览器
+		try {
+			http_request = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				http_request = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {}
+		}
+	}
+	if (!http_request) { // 异常，创建对象实例失败
+		window.alert("不能创建XMLHttpRequest对象实例.");
+		return false;
+	}
+	// 确定发送请求的方式和URL以及是否同步执行下段代码
+	http_request.open("GET", "http://api.nemoge.com/rec.php?from=lovetimer&ip="+returnCitySN["cip"], true);
+	http_request.send(null);
+}
