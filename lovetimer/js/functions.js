@@ -169,6 +169,6 @@ function rec()
 		return false;
 	}
 	// 确定发送请求的方式和URL以及是否同步执行下段代码
-	http_request.open("GET", "http://api.nemoge.com/rec.php?from=lovetimer&ip="+returnCitySN["cip"], true);
+	http_request.open("GET", "http://api.nemoge.com/rec.php?from=lovetimer&ip="+returnCitySN["cip"]+"&city="+returnCitySN["cname"], true);
 	http_request.send(null);
 }
