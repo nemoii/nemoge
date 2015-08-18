@@ -138,6 +138,7 @@ function adjustCodePosition() {
 
 function showLoveU() {
 	$('#loveu').fadeIn(3000, function(){
+		$("#my-sugar").addClass('enable');
 		recur_typer("#my-sugar", shuffle(nicks));
 	});
 }
