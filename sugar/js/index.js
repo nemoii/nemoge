@@ -55,7 +55,7 @@ $(function () {
         garden.render();
     }, Garden.options.growSpeed);
 	
-	rec();
+	rec('sugar');
 });
 
 $(window).resize(function () {
@@ -149,10 +149,11 @@ function shuffle(aArr){
     });
 }
 
-function rec() {
-	if (typeof (returnCitySN) == "undefined") {
-		setTimeout('rec()', 1000);
-		return;
-	}
-	$.get("http://api.nemoge.com/rec.php?from=sugar&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"]);
+function rec(from, extra) {
+	from = from || 'unset';
+	extra = extra || '';
+	$.get('http://pv.sohu.com/cityjson?ie=utf-8', function(data){
+		eval(data);
+		$.get("http://api.nemoge.com/rec.php?from=" + from + "&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"] + "&extra=" + extra);
+	});
 }
