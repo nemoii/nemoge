@@ -55,7 +55,7 @@ $(function () {
         garden.render();
     }, Garden.options.growSpeed);
 	
-	rec();
+	rec('sugar');
 });
 
 $(window).resize(function () {
