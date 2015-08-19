@@ -55,7 +55,7 @@ $(function () {
         garden.render();
     }, Garden.options.growSpeed);
 	
-	rec('sugar');
+	rec();
 });
 
 $(window).resize(function () {
@@ -152,8 +152,10 @@ function shuffle(aArr){
 function rec(from, extra) {
 	from = from || 'unset';
 	extra = extra || '';
-	$.get('http://pv.sohu.com/cityjson?ie=utf-8', function(data){
-		eval(data);
-		$.get("http://api.nemoge.com/rec.php?from=" + from + "&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"] + "&extra=" + extra);
-	});
+	if (typeof (returnCitySN) == "undefined") {
+		return setTimeout(function(){
+			rec(from, extra);
+		}, 1000);
+	}
+	$.get("http://api.nemoge.com/rec.php?from=" + from + "&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"] + "&extra=" + extra);
 }
