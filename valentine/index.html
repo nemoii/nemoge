@@ -35,10 +35,6 @@
       return _dump(_ranChar, len).join('');
     };
     
-    var _ran = function(){
-      return _ranStr(parseInt(Math.random() * 12));
-    }
-    
     var _pair = function(arr){
       return arr.map(function(str){
         return {str: str, org: _ranStr(str.length)};
@@ -46,7 +42,6 @@
     }
     
     var word = window.location.search.substring(1);
-    //var words = ["Don't let them say you ain't beautiful OoOo~", "They can all get fucked just stay true to you SoOo~"];
     var words = [word || "xxxooo", "happy Chinese Valentine's Day!"];
     
     recur_scraper("#span", _pair(words), {
