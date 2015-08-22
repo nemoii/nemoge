@@ -22,6 +22,67 @@ var malarkey = function (elem, opts) {
 
   // internal functions that are added into `queue` via their respective
   // public methods
+  var _scrape = function (done, str, speed, step, maxTime, incr) {
+    var len = str.length;
+    var _s = function (now, tar) {
+      var chars = "abcdefghijklmnopqrstuvwxyz";
+      var _i = chars.indexOf.bind(chars);
+      
+      if (_i(now) > _i(tar) && _i(now) - _i(tar) > step) {
+        return chars[_i(now) - step];
+      }
+      else if (_i(now) < _i(tar) && _i(tar) - _i(now) > step) {
+        return chars[_i(now) + step];
+      }
+      return tar;
+    }
+    var _scrapeChar = function (i, n, done) {
+      setTimeout(function () {
+        n += 1;
+        var scrape = getter(elem);
+        var now = scrape[i];
+        var tar = str[i];
+        if (now === tar || n > maxTime) {
+          return done();
+        }
+        scrape = scrape.substring(0, i) + (n == maxTime ? tar : _s(now, tar)) + scrape.substring(i + 1, len);
+        setter(elem, scrape);
+        _scrapeChar(i, n, done);
+      }, speed);
+    }
+    if (len === 0 || len !== getter(elem).length) {
+      return done();
+    }
+    if (incr < 0) {
+      (function t(i) {
+        _scrapeChar(i, 0, function () {
+          i += 1;
+          if (i < len) {
+            t(i);
+          } else {
+            done();
+          }
+        });
+      })(0);
+    }
+    else {
+      var doneCount = 0;
+      (function t(i) {
+        setTimeout(function () {
+          _scrapeChar(i, 0, function () {
+            doneCount += 1;
+            if (doneCount == len) {
+              done();
+            }
+          })
+          i += 1;
+          if (i < len) {
+            t(i);
+          }
+        }, incr * speed);
+      })(0);
+    }
+  };
   var _type = function (done, str, speed) {
     var len = str.length;
     if (len === 0) {
@@ -73,6 +134,51 @@ var malarkey = function (elem, opts) {
       }, speed);
     })(count);
   };
+  var _messy = function () {
+    var messy = "qwertyuioplkjhgfdsazxcvbnm@#$%?";
+    return messy[parseInt(Math.random() * messy.length)];
+  }
+  var _dump = function(fn, times){
+    if(times == 0){
+      return [];
+    }
+    return _dump(fn, times - 1).concat(fn());
+  };
+  var _deleteMessy = function (done, x, speed) {
+    var curr = getter(elem);
+    var count = curr.length; // default to deleting entire contents of `elem`
+    if (x != null) {
+      if (typeof x === 'string') {
+        // delete the string `x` if and only if `elem` ends with `x`
+        if (endsWith(curr, x + postfix)) {
+          count = x.length + postfix.length;
+        } else {
+          count = 0;
+        }
+      } else {
+        // delete the last `x` characters from `elem`
+        if (x > -1) {
+          count = Math.min(x, count);
+        }
+      }
+    }
+    if (count === 0) {
+      return done();
+    }
+    (function d(count) {
+      setTimeout(function () {
+        var curr = getter(elem);
+        if (count) {
+          // drop last char
+          var s = _dump(_messy, curr.length - 1).join('');
+          setter(elem, s);
+          d(count - 1);
+        } else {
+          done();
+        }
+      }, speed);
+    })(count);
+  };
   var _clear = function (done) {
     setter(elem, '');
     done();
@@ -89,8 +195,16 @@ var malarkey = function (elem, opts) {
     queue(_type, str + postfix, speed || typeSpeed);
     return this;
   };
+  this.scrape = function (str, incr, step, maxTime, speed) {
+    queue(_scrape, str + postfix, speed || typeSpeed, step || 1, maxTime || 26, incr);
+    return this;
+  };
   this.delete = function (x, speed) {
     queue(_delete, x, speed || deleteSpeed);
+    return this;
+  };
+  this.messy = function (x, speed) {
+    queue(_deleteMessy, x, speed || deleteSpeed);
     return this;
   };
   this.clear = function () {
@@ -113,9 +227,7 @@ var endsWith = function (str, suffix) {
 };
 
 var segue = function (cb, opts) {
-
   'use strict';
-
   var slice = [].slice;
 
   // both `cb` and `opts` are optional
@@ -134,7 +246,6 @@ var segue = function (cb, opts) {
   var prevErr = false; // truthy if an error has occurred
 
   var next = function (err) {
-
     // cache the array length
     var len = fns.length;
 
@@ -152,11 +263,9 @@ var segue = function (cb, opts) {
 
     // call the current `fn`, passing it the arguments in `args`
     fns[i].apply(null, [].concat(next, args[i++]));
-
   };
 
   return function segue(fn) {
-
     // an error has already occurred; call the `cb` with the `prevErr`
     if (prevErr) {
       return cb(prevErr);
@@ -174,9 +283,6 @@ var segue = function (cb, opts) {
         next();
       }, 0);
     }
-
     return segue;
-
   };
-
 };

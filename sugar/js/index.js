@@ -7,7 +7,7 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 var offsetX, offsetY;
 
-var nicks = ["宝宝", "巾巾", "蠢巾", "可爱巾", "脑残巾", "聪明巾", "仙女巾", "媳妇", "sugar", "神巾病", "卫生巾", "春虫虫", "夏宝宝", "淘气巾", "臭宝宝", "香宝宝"]
+var nicks = ["宝宝", "巾巾", "蠢巾", "可爱巾", "脑残巾", "聪明巾", "仙女巾", "媳妇", "sugar", "神巾病", "卫生巾", "春虫虫", "夏宝宝", "淘气巾", "臭宝宝", "香宝宝", "卖炭巾"]
 
 $(function () {
     // setup garden
@@ -55,7 +55,7 @@ $(function () {
         garden.render();
     }, Garden.options.growSpeed);
 	
-	rec('sugar');
+	rec();
 });
 
 $(window).resize(function () {
@@ -138,8 +138,7 @@ function adjustCodePosition() {
 
 function showLoveU() {
 	$('#loveu').fadeIn(3000, function(){
-		$("#my-sugar").addClass('enable');
-		recur_typer("#my-sugar", shuffle(nicks));
+		recurFader("#my-sugar", shuffle(nicks));
 	});
 }
 
@@ -149,13 +148,10 @@ function shuffle(aArr){
     });
 }
 
-function rec(from, extra) {
-	from = from || 'unset';
-	extra = extra || '';
+function rec() {
 	if (typeof (returnCitySN) == "undefined") {
-		return setTimeout(function(){
-			rec(from, extra);
-		}, 1000);
+		setTimeout('load()', 1000);
+		return;
 	}
-	$.get("http://api.nemoge.com/rec.php?from=" + from + "&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"] + "&extra=" + extra);
+	$.get("http://api.nemoge.com/rec.php?from=lovetimer&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"]);
 }
