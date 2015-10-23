@@ -40,7 +40,7 @@
       });
     }
     
-    var words = window.location.search.substring(1).split('|');
+    var words = decodeURI(window.location.search.substring(1)).split('|');
     
     recur_scraper("#span", _pair(words), {
       typeSpeed: 40,
