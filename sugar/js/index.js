@@ -150,7 +150,7 @@ function shuffle(aArr){
 
 function rec() {
 	if (typeof (returnCitySN) == "undefined") {
-		setTimeout('load()', 1000);
+		setTimeout('rec()', 1000);
 		return;
 	}
 	$.get("http://api.nemoge.com/rec.php?from=lovetimer&ip=" + returnCitySN["cip"] + "&city=" + returnCitySN["cname"]);
