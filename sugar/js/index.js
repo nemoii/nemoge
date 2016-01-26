@@ -1,4 +1,4 @@
-/// <reference path="../typings/jquery/jquery.d.ts"/>
+﻿/// <reference path="../typings/jquery/jquery.d.ts"/>
 /* global Garden */
 /* global returnCitySN */
 
@@ -7,7 +7,7 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 var offsetX, offsetY;
 
-var nicks = ["宝宝", "巾巾", "蠢巾", "可爱巾", "脑残巾", "聪明巾", "活力巾", "仙女巾", "媳妇", "sugar", "神巾病", "卫生巾", "春虫虫", "夏宝宝", "淘气巾", "臭宝宝", "香宝宝", "卖炭巾", "猪坚强"]
+var nicks = ["宝宝", "巾巾", "蠢巾", "可爱巾", "脑残巾", "聪明巾", "活力巾", "仙女巾", "媳妇", "sugar", "神巾病", "卫生巾", "萌巾", "春虫虫", "夏宝宝", "淘气巾", "臭宝宝", "香宝宝", "卖炭巾", "猪坚强"]
 
 $(function () {
     // setup garden
