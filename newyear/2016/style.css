@@ -2,42 +2,26 @@
 /* CSS Document */
 
 body{
-    background: url(img/bg.jpg) 50% 0 no-repeat fixed;
+    background-color: #FFF8D7;
 }
 
-#second .bg{
-	background: url(images/trainers.png) 50% 0 no-repeat fixed;
-	height: 1300px;
-	margin: 0 auto;
-	padding: 0;
-	position: absolute;
-	width: 900px;
-	z-index: 200;
+#wrapper{
+    background: url(img/monkey_trans.png) repeat fixed;
+    background-size: 30%;
+    height: 10000px;
+    padding-top: 100px;
 }
 
-#third{
-	background: url(images/thirdBG.jpg) 50% 0 no-repeat fixed;
-	color: white;
-	height: 650px;
-	padding: 100px 0 0 0;	
+#couplet_left{
+    background: url(img/couplet_left.jpg) no-repeat;
+    background-position: top right;
+    background-size: 90%;
+    height: 10000px;
 }
 
-#fifth{
-	background: #ccc;
-	height: 400px;
-	margin: 0 auto;
-	padding: 40px 0 0 0;
-}
-
-.story{
-	margin: 0 auto;
-	min-width: 980px;
-	overflow: auto;
-	width: 980px;
-}
-
-.story .float-left, .story .float-right{
-	padding: 100px 0 0 0;
-	position: relative;
-	width: 350px;	
+#couplet_right{
+    background: url(img/couplet_right.jpg) no-repeat;
+    background-position: top left;
+    background-size: 90%;
+    height: 10000px;
 }
